@@ -1,5 +1,5 @@
-public class VariablesTheme{
-    public static void main(String[] args){
+public class VariablesTheme {
+    public static void main(String[] args) {
         System.out.println("1. Вывод характеристик компьютера");
         byte bitness = 64;
         System.out.println("Разрядность операционной системы: " + bitness + "-битная");
