@@ -91,6 +91,7 @@ public class VariablesTheme {
         System.out.printf("  %c      %c\n", slash, backslash);
         System.out.printf(" %c%c%c%c%c", slash, underscore, underscore, underscore, underscore);
         System.out.printf("%c%c%c%c%c\n", slash, backslash, underscore, underscore, backslash);
+        
         System.out.println("\n8. Вывод количества сотен, десятков и единиц числа");
         int num8 = 123;
         int ones = num8 % 10;
