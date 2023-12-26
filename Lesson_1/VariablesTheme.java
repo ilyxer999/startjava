@@ -50,8 +50,7 @@ public class VariablesTheme {
         int num2 = 5;
         System.out.println("Перестановка с помощью третьей переменной");
         System.out.printf("Исходные значения: num1 = %d, num2 = %d\n", num1, num2);
-        int num3 = 0;
-        num3 = num1;
+        int num3 = num1;
         num1 = num2;
         num2 = num3;
         System.out.printf("Новые значения: num1 = %d, num2 = %d\n", num1, num2);
@@ -95,8 +94,8 @@ public class VariablesTheme {
         System.out.println("\n8. Вывод количества сотен, десятков и единиц числа");
         int num8 = 123;
         int ones = num8 % 10;
-        int hundreds = num8 / 100;
         int tens = num8 / 10 % 10;
+        int hundreds = num8 / 100;
         int sumDigits = tens + hundreds + ones;
         int productDigits = tens * hundreds * ones;
         System.out.printf("Число %d содержит:\n", num8);
