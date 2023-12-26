@@ -80,18 +80,24 @@ public class IfElseStatementTheme {
             System.out.println("Все числа равны");
         } else {
             if (isEqualDigit && isEqualTens) {
-                System.out.printf("Числа %d и %d равны по разрядам 1 и 2, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234, tensNum123, tensNum234, digitNum123, digitNum234);
+                System.out.printf("Числа %d и %d равны по разрядам 1 и 2, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234, tensNum123,
+                tensNum234, digitNum123, digitNum234);
             } else if (isEqualDigit && isEqualHundreds) {
-                System.out.printf("Числа %d и %d равны по разрядам 1 и 3, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234, hundredsNum123, hundredsNum234, digitNum123, digitNum234);
+                System.out.printf("Числа %d и %d равны по разрядам 1 и 3, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234,
+                hundredsNum123, hundredsNum234, digitNum123, digitNum234);
             } else if (isEqualTens && isEqualHundreds) {
-                System.out.printf("Числа %d и %d равны по разрядам 2 и 3, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234, hundredsNum123, hundredsNum234, tensNum123, tensNum234);
+                System.out.printf("Числа %d и %d равны по разрядам 2 и 3, одинаковые в них цифры %d и %d, %d и %d\n", num123, num234,
+                hundredsNum123, hundredsNum234, tensNum123, tensNum234);
             } else {
                 if (isEqualDigit) {
-                    System.out.printf("Числа %d и %d равны по разряду 1, одинаковые в них цифры %d и %d\n", num123, num234, digitNum123, digitNum234);
+                    System.out.printf("Числа %d и %d равны по разряду 1, одинаковые в них цифры %d и %d\n", num123, num234, digitNum123,
+                    digitNum234);
                 } else if (isEqualTens) {
-                    System.out.printf("Числа %d и %d равны по разряду 2, одинаковые в них цифры %d и %d\n", num123, num234, tensNum123, tensNum234);
+                    System.out.printf("Числа %d и %d равны по разряду 2, одинаковые в них цифры %d и %d\n", num123, num234, tensNum123,
+                    tensNum234);
                 } else {
-                    System.out.printf("Числа %d и %d равны по разряду 3, одинаковые в них цифры %d и %d\n", num123, num234, hundredsNum123, hundredsNum234);
+                    System.out.printf("Числа %d и %d равны по разряду 3, одинаковые в них цифры %d и %d\n", num123, num234, hundredsNum123,
+                    hundredsNum234);
                 }
             }
         }
@@ -148,7 +154,8 @@ public class IfElseStatementTheme {
         }
         double averageGrade = ((double)historyGrade + (double)programmingGrade) / 2;
         System.out.printf("оценка по истории - %d, оценка по программированию - %d\n", historyGrade, programmingGrade);
-        System.out.printf("средний балл оценок по предметам - %.1f, средний процент по предметам - %.1f\n", averageGrade, averageScore);
+        System.out.printf("средний балл оценок по предметам - %.1f\n", averageGrade);
+        System.out.printf("средний процент по предметам - %.1f\n", averageScore);
 
         System.out.println("\n8. Расчет годовой прибыли");
         int monthlyIncome = 14000;
