@@ -105,9 +105,7 @@ public class IfElseStatementTheme {
 
         System.out.println("\n\n7. Определение оценки по предметам");
         double historyPercent = 59;
-        double programmingPercent = 92;
         int historyGrade = 2;
-        int programmingGrade = 2;
         if (historyPercent > 60 && historyPercent <= 73) {
             historyGrade = 3;
         } else if (historyPercent > 73 && historyPercent <= 91) {
@@ -115,6 +113,8 @@ public class IfElseStatementTheme {
         } else if (historyPercent > 91) {
             historyGrade = 5;
         }
+        int programmingGrade = 2;
+        double programmingPercent = 92;
         if (programmingPercent > 60 && programmingPercent <= 73) {
             programmingGrade = 3;
         } else if (programmingPercent > 73 && programmingPercent <= 91) {
