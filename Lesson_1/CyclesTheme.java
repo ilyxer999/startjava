@@ -55,13 +55,11 @@ public class CyclesTheme {
 
         System.out.println("\n\n4. Вывод чисел в несколько строк");
         int count = 0;
-        for (int i = 1; i < 24; i++) {
-            if (i % 2 != 0) {
-                System.out.printf("%3d ", i);
-                count++;
-                if (count % 5 == 0) {
-                    System.out.println();
-                }
+        for (int i = 1; i < 24; i+=2) {
+            System.out.printf("%3d ", i);
+            count++;
+            if (count % 5 == 0) {
+                System.out.println();
             }
         }
         while (count % 5 != 0) {
@@ -130,22 +128,21 @@ public class CyclesTheme {
         System.out.println("\n7. Отображение ASCII-символов");
         System.out.printf("%-15s%-15s%-15s\n", "DECIMAL", "CHARACTER", "DESCRIPTION");
         for (int i = 15; i < 48; i += 2) {
-            System.out.printf("  %-15d  %-15c %s\n", i, (char) i, Character.getName(i));
+            System.out.printf("  %-15d  %-15c %s\n", i, i, Character.getName(i));
         }
         for (int i = 98; i <= 122; i += 2) {
-            System.out.printf("  %-15d  %-15c %s\n", i, (char) i, Character.getName(i));
+            System.out.printf("  %-15d  %-15c %s\n", i, i, Character.getName(i));
         }
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
-        int num8 = 4234324;
+        int num8 = 1234321;
         int copyNum8 = num8;
-        int rightHalfNum = 0;
-        for (int i = 0; i < 3; i++) {
-            rightHalfNum = rightHalfNum * 10 + copyNum8 % 10;
-            copyNum8 /=  10;
+        int reversedNum8 = 0;
+        while (copyNum8 > 0) {
+            reversedNum = reversedNum * 10 + copyNum8 % 10;
+            copyNum8 /= 10;
         }
-        int leftHalfNum = copyNum8 / 10;
-        if (leftHalfNum == rightHalfNum) {
+        if (num8 == reversedNum8) {
             System.out.printf("%d является палиндромом\n", num8);
         } else {
             System.out.printf("%d не является палиндромом\n", num8);
