@@ -4,9 +4,6 @@ public class Calculator {
     private char sign;
     private int result;
 
-    public int getA() {
-        return a;
-    }
 
     public void setA(int a) {
         if (a > 0) {
@@ -14,9 +11,6 @@ public class Calculator {
         }
     }
 
-    public int getB() {
-        return b;
-    }
 
     public void setB(int b) {
         if (b > 0) {
@@ -24,17 +18,10 @@ public class Calculator {
         }
     }
 
-    public char getSign() {
-        return sign;
-    }
-
     public void setSign(char sign) {
         this.sign = sign;
     }
 
-    public int getResult() {
-        return result;
-    }
 
     public void calculate() {
         switch (sign) {
