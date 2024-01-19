@@ -51,7 +51,7 @@ public class Jaeger {
     }
 
     public void drift(boolean isDrift) {
-        if (isDrift == true) {
+        if (isDrift) {
             System.out.println("Вошли в дрифт");
         } else {
             System.out.println("Вышли из дрифта");

@@ -4,13 +4,11 @@ public class Calculator {
     private char sign;
     private int result;
 
-
     public void setA(int a) {
         if (a > 0) {
             this.a = a;
         }
     }
-
 
     public void setB(int b) {
         if (b > 0) {
@@ -21,7 +19,6 @@ public class Calculator {
     public void setSign(char sign) {
         this.sign = sign;
     }
-
 
     public void calculate() {
         switch (sign) {
@@ -57,6 +54,5 @@ public class Calculator {
         } else {
             System.out.println(a + " " + sign + " " + b + " = " + result);
         }
-        
     }
 }
