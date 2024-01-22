@@ -4,28 +4,23 @@ public class GuessNumber {
     private Player player1;
     private Player player2;
     private Scanner scanner = new Scanner(System.in);
-    private boolean isWin;
     
-    public GuessNumber(String name1, String name2) {
-        player1 = new Player(name1);
-        player2 = new Player(name2);
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
-    public void startGame() {
-        int computerNum = (int) (Math.random() * 100) + 1 ;
-
-        while (!isWin) {
+    public void start() {
+        int hiddenNum = (int) (Math.random() * 100) + 1 ;
+        do {
             divide();
             inputNumber(player1);
-            printResultMove(player1, computerNum);
-            if (isWin) {
+            if (isGuessed(player1, hiddenNum)) {
                 break;
             }
-
             divide();
             inputNumber(player2);
-            printResultMove(player2, computerNum);
-        }
+        } while (!isGuessed(player2, hiddenNum));
     }
 
     private void inputNumber(Player player) {
@@ -33,17 +28,21 @@ public class GuessNumber {
         player.setNumber(scanner.nextInt());
     }
 
-    private void printResultMove(Player player, int computerNum) {
-        if (player.getNumber() == 0) {
+    private boolean isGuessed(Player player, int hiddenNum) {
+        if (player.getNumber() == -1) {
             System.out.println("Ввели неправильное число и ход переходит к другому игроку");
-        } else if (player.getNumber() == computerNum) {
-            System.out.printf("Игрок %s угадал число\n", player.getName());
-            this.isWin = true;
-        } else if (player.getNumber() > computerNum) {
+            return false;
+        } else if (player.getNumber() == hiddenNum) {
+            System.out.printf("Игрок %s угадал число!!!\n", player.getName());
+            return true;
+        } else if (player.getNumber() > hiddenNum) {
             System.out.printf("Число %d больше того, что загадал компьютер\n", player.getNumber());
-        } else if (player.getNumber() < computerNum) {
+            return false;
+        } else if (player.getNumber() < hiddenNum) {
             System.out.printf("Число %d меньше того, что загадал компьютер\n", player.getNumber());
+            return false;
         }
+        return false;
     }
 
     private void divide() {

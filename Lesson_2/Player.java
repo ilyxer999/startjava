@@ -13,15 +13,13 @@ public class Player {
 
     public int getNumber() {
         return number;
-
     }
 
     public void setNumber(int number) {
-        if (number > 0 && number <= 100){
+        if (number > 0 && number <= 100) {
             this.number = number;
         } else {
-            this.number = 0;
+            this.number = -1;
         }
-        
     }
 }
