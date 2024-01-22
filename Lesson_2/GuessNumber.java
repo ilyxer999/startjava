@@ -29,20 +29,19 @@ public class GuessNumber {
     }
 
     private boolean isGuessed(Player player, int hiddenNum) {
-        if (player.getNumber() == -1) {
-            System.out.println("Ввели неправильное число и ход переходит к другому игроку");
-            return false;
-        } else if (player.getNumber() == hiddenNum) {
+        if (player.getNumber() == hiddenNum) {
             System.out.printf("Игрок %s угадал число!!!\n", player.getName());
             return true;
-        } else if (player.getNumber() > hiddenNum) {
-            System.out.printf("Число %d больше того, что загадал компьютер\n", player.getNumber());
-            return false;
-        } else if (player.getNumber() < hiddenNum) {
-            System.out.printf("Число %d меньше того, что загадал компьютер\n", player.getNumber());
+        } else {
+            if (player.getNumber() == -1) {
+                System.out.println("Ввели неправильное число и ход переходит к другому игроку");
+            } else if (player.getNumber() > hiddenNum) {
+                System.out.printf("Число %d больше того, что загадал компьютер\n", player.getNumber());
+            } else if (player.getNumber() < hiddenNum) {
+                System.out.printf("Число %d меньше того, что загадал компьютер\n", player.getNumber());
+            }
             return false;
         }
-        return false;
     }
 
     private void divide() {
