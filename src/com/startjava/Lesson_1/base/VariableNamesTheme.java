@@ -1,3 +1,5 @@
+package com.startjava.Lesson_1.base;
+
 public class VariableNamesTheme {
     public static void main(String[] args) {
         System.out.println("1. Разные переменные");
@@ -167,7 +169,7 @@ public class VariableNamesTheme {
 
         //протокол передачи гипертекста
         String protocol = "value";
-        System.out.println("протокол передачи гипертекста: " + httpProtocol);
+        System.out.println("протокол передачи гипертекста: " + protocol);
 
         //сокращенный uniform resource locator
         String shortUrl = "safe-surf.ru";

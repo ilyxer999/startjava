@@ -1,3 +1,5 @@
+package com.startjava.Lesson_1.base;
+
 public class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("1. Подсчет суммы четных и нечетных чисел");
@@ -139,7 +141,7 @@ public class CyclesTheme {
         int copyNum8 = num8;
         int reversedNum8 = 0;
         while (copyNum8 > 0) {
-            reversedNum = reversedNum * 10 + copyNum8 % 10;
+            reversedNum8 = reversedNum8 * 10 + copyNum8 % 10;
             copyNum8 /= 10;
         }
         if (num8 == reversedNum8) {
