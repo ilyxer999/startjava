@@ -1,74 +1,73 @@
 package com.startjava.Lesson_2_3_4.array;
 
 public class ArrayTheme {
+    static int len;
+
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
         int[] array1 = {1, 7, 4, 5, 2, 6, 3};
-        int[] arrayReversed1 = new int[array1.length];
-        int indexReverse = array1.length - 1;
-        for (int i = 0; i < array1.length; i++) {
-            arrayReversed1[i] = array1[indexReverse];
-            indexReverse--;
-        }
         System.out.println(printIntArray("До реверса: ", array1));
-        System.out.println(printIntArray("После реверса: ", arrayReversed1));
+        len = array1.length;
+        for (int i = 0; i < len / 2; i++) {
+            int temp = array1[i];
+            array1[i] = array1[len - i - 1];
+            array1[len - i - 1] = temp;
+        }
+        System.out.println(printIntArray("После реверса: ", array1));
 
         System.out.println("\n2. Произведение элементов массива");
         int[] array2 = new int[10];
-        for (int i = 0; i < array2.length; i++) {
+        len = array2.length;
+        for (int i = 0; i < len; i++) {
             array2[i] = i;
         }
 
         int product = 1;
-        for (int i = 1; i < array2.length - 1; i++) {
+        for (int i = 1; i < len - 1; i++) {
             product *= i;
             System.out.print(array2[i]);
-            String a = (i == array2.length - 2) ? " = " : " * ";
-            System.out.print(a);
+            String mathSign = (i == len - 2) ? " = " : " * ";
+            System.out.print(mathSign);
         }
         System.out.println(product);
 
         System.out.println("\n3. Удаление элементов массива");
         double[] array3 = new double[15];
-        for (int i = 0; i < array3.length; i++) {
+        len = array3.length;
+        for (int i = 0; i < len; i++) {
             array3[i] = Math.random();
         }
+        System.out.println(printDoubleArray("Исходный массив: \n",array3));
 
-        double middleCell = array3[(array3.length - 1) / 2];
-        double[] modifiedArray3 = new double[array3.length];
+        double middleCell = array3[(len - 1) / 2];
         int counter = 0;
-        for (int i = 0; i < array3.length; i++) {
+        for (int i = 0; i < len; i++) {
             if (middleCell < array3[i]) {
-                modifiedArray3[i] = 0;
+                array3[i] = 0;
                 counter++;
-            } else {
-                modifiedArray3[i] = array3[i];
             }
         }
 
-        System.out.println(printDoubleArray("Исходный массив: \n",array3));
-        System.out.println(printDoubleArray("Измененный массив: \n",modifiedArray3));
+        System.out.println(printDoubleArray("Измененный массив: \n",array3));
         System.out.println("Количество обнуленных ячеек: " + counter);
 
         System.out.println("\n4. Вывод алфавита лесенкой");
         char[] array4 = new char[26];
-        int indexArray4 = 0;
         for (int i = 65; i <= 90; i++) {
-            array4[indexArray4] = (char) i;
-            indexArray4++;
+            array4[i - 65] = (char) i;
         }
 
-        char[] arrayReversed4 = new char[array4.length];
-        indexReverse = array4.length - 1;
-        for (int i = 0; i < arrayReversed4.length; i++) {
-            arrayReversed4[i] = array4[indexReverse];
-            indexReverse--;
+        len = array4.length;
+        for (int i = 0; i < len / 2; i++) {
+            char temp = array4[i];
+            array4[i] = array4[len - i - 1];
+            array4[len - i - 1] = temp;
         }
 
-        for (int i = 0; i < arrayReversed4.length; i++) {
-            for (int j = 0; j < arrayReversed4.length; j++) {
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len; j++) {
                 if (j != i + 1) {
-                    System.out.print(arrayReversed4[j]);
+                    System.out.print(array4[j]);
                 } else {
                     break;
                 }
@@ -78,7 +77,8 @@ public class ArrayTheme {
 
         System.out.println("\n5. Заполнение массива уникальными числами");
         int[] array5 = new int[30];
-        for (int i = 0; i < array5.length; i++) {
+        len = array5.length;
+        for (int i = 0; i < len; i++) {
             int num = (int) (Math.random() * 40) + 60;
             while (findNum(array5, num)) {
                 num = (int) (Math.random() * 40) + 60;
@@ -86,36 +86,36 @@ public class ArrayTheme {
             array5[i] = num;
         }
 
-        counter = 0;
-        while (counter < array5.length) {
-            for (int i = 1; i < array5.length; i++) {
-                int a = array5[i - 1];
-                int b = array5[i];
-                if (a > b) {
-                    array5[i]  = a;
-                    array5[i - 1] = b;
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+
+            for (int i = 0; i < len - 1; i++) {
+                if (array5[i] > array5[i + 1]) {
+                    int temp = array5[i];
+                    array5[i] = array5[i + 1];
+                    array5[i + 1] = temp;
+                    isSorted = false;
                 }
             }
-            counter++;
         }
 
-        counter = 1;
-        for (int i: array5) {
-            if (counter % 10 == 0) {
-                System.out.print(i);
+        for (int i = 0; i < len; i++) {
+            if ((i + 1) % 10 == 0) {
+                System.out.print(array5[i]);
                 System.out.println();
             } else {
-                System.out.print(i + ", ");
+                System.out.print(array5[i] + ", ");
             }
-            counter++;
         }
     }
 
     private static String printIntArray(String prefix, int[] array) {
         StringBuilder result = new StringBuilder(prefix + "[");
-        for (int i = 0; i < array.length; i++) {
+        len = array.length;
+        for (int i = 0; i < len; i++) {
             result.append(array[i]);
-            if (i == array.length - 1) {
+            if (i == len - 1) {
                 result.append("]");
             } else {
                 result.append(", ");
@@ -126,12 +126,13 @@ public class ArrayTheme {
 
     private static String printDoubleArray(String prefix, double[] array) {
         StringBuilder result = new StringBuilder(prefix);
-        for (int i = 0; i < array.length; i++) {
-            String string = Double.toString(array[i]);
+        len = array.length;
+        for (int i = 0; i < len; i++) {
+            String stringValue = Double.toString(array[i]);
             if (i == 7) {
-                result.append(String.format("%.5s", string)).append("\n");
+                result.append(String.format("%.5s", stringValue)).append("\n");
             } else {
-                result.append(String.format("%.5s ", string));
+                result.append(String.format("%.5s ", stringValue));
             }
         }
         return result.toString();
