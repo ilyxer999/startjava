@@ -5,112 +5,35 @@ public class ArrayTheme {
 
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
-        int[] array1 = {1, 7, 4, 5, 2, 6, 3};
-        System.out.println(printIntArray("До реверса: ", array1));
-        len = array1.length;
-        for (int i = 0; i < len / 2; i++) {
-            int temp = array1[i];
-            array1[i] = array1[len - i - 1];
-            array1[len - i - 1] = temp;
-        }
-        System.out.println(printIntArray("После реверса: ", array1));
+        reverseArray();
 
         System.out.println("\n2. Произведение элементов массива");
-        int[] array2 = new int[10];
-        len = array2.length;
-        for (int i = 0; i < len; i++) {
-            array2[i] = i;
-        }
-
-        int product = 1;
-        for (int i = 1; i < len - 1; i++) {
-            product *= i;
-            System.out.print(array2[i]);
-            String mathSign = (i == len - 2) ? " = " : " * ";
-            System.out.print(mathSign);
-        }
-        System.out.println(product);
+        calculateProduct();
 
         System.out.println("\n3. Удаление элементов массива");
-        double[] array3 = new double[15];
-        len = array3.length;
-        for (int i = 0; i < len; i++) {
-            array3[i] = Math.random();
-        }
-        System.out.println(printDoubleArray("Исходный массив: \n",array3));
-
-        double middleCell = array3[(len - 1) / 2];
-        int counter = 0;
-        for (int i = 0; i < len; i++) {
-            if (middleCell < array3[i]) {
-                array3[i] = 0;
-                counter++;
-            }
-        }
-
-        System.out.println(printDoubleArray("Измененный массив: \n",array3));
-        System.out.println("Количество обнуленных ячеек: " + counter);
+        removeElements();
 
         System.out.println("\n4. Вывод алфавита лесенкой");
-        char[] array4 = new char[26];
-        for (int i = 65; i <= 90; i++) {
-            array4[i - 65] = (char) i;
-        }
-
-        len = array4.length;
-        for (int i = 0; i < len / 2; i++) {
-            char temp = array4[i];
-            array4[i] = array4[len - i - 1];
-            array4[len - i - 1] = temp;
-        }
-
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; j < len; j++) {
-                if (j != i + 1) {
-                    System.out.print(array4[j]);
-                } else {
-                    break;
-                }
-            }
-            System.out.println();
-        }
+        printAlphabetStairs();
 
         System.out.println("\n5. Заполнение массива уникальными числами");
-        int[] array5 = new int[30];
-        len = array5.length;
-        for (int i = 0; i < len; i++) {
-            int num = (int) (Math.random() * 40) + 60;
-            while (findNum(array5, num)) {
-                num = (int) (Math.random() * 40) + 60;
-            }
-            array5[i] = num;
-        }
-
-        boolean isSorted = false;
-        while (!isSorted) {
-            isSorted = true;
-
-            for (int i = 0; i < len - 1; i++) {
-                if (array5[i] > array5[i + 1]) {
-                    int temp = array5[i];
-                    array5[i] = array5[i + 1];
-                    array5[i + 1] = temp;
-                    isSorted = false;
-                }
-            }
-        }
-
-        for (int i = 0; i < len; i++) {
-            if ((i + 1) % 10 == 0) {
-                System.out.print(array5[i]);
-                System.out.println();
-            } else {
-                System.out.print(array5[i] + ", ");
-            }
-        }
+        fillUniqueNumbers();
     }
 
-    private static String printIntArray(String prefix, int[] array) {
+    private static void reverseArray() {
+        int[] intNumbers = {1, 7, 4, 5, 2, 6, 3};
+        printIntArray("До реверса: ", intNumbers);
+        len = intNumbers.length;
+        for (int i = 0; i < intNumbers.length / 2; i++) {
+            int temp = intNumbers[i];
+            --len;
+            intNumbers[i] = intNumbers[len];
+            intNumbers[len] = temp;
+        }
+        printIntArray("После реверса: ", intNumbers);
+    }
+
+    private static void printIntArray(String prefix, int[] array) {
         StringBuilder result = new StringBuilder(prefix + "[");
         len = array.length;
         for (int i = 0; i < len; i++) {
@@ -121,21 +44,112 @@ public class ArrayTheme {
                 result.append(", ");
             }
         }
-        return result.toString();
+        System.out.println(result);
     }
 
-    private static String printDoubleArray(String prefix, double[] array) {
+    private static void calculateProduct() {
+        int[] intNumbers = new int[10];
+        len = intNumbers.length;
+        for (int i = 0; i < len; i++) {
+            intNumbers[i] = i;
+        }
+
+        int product = 1;
+        for (int i = 1; i < len - 1; i++) {
+            product *= i;
+            System.out.print(intNumbers[i]);
+            String mathSign = (i == len - 2) ? " = " : " * ";
+            System.out.print(mathSign);
+        }
+        System.out.println(product);
+    }
+
+    private static void removeElements() {
+        double[] doubleNumbers = new double[15];
+        len = doubleNumbers.length;
+        for (int i = 0; i < len; i++) {
+            doubleNumbers[i] = Math.random();
+        }
+        printDoubleArray("Исходный массив: \n",doubleNumbers);
+
+        double middleCellValue = doubleNumbers[(len - 1) / 2];
+        int counter = 0;
+        for (int i = 0; i < len; i++) {
+            if (middleCellValue < doubleNumbers[i]) {
+                doubleNumbers[i] = 0;
+                counter++;
+            }
+        }
+        printDoubleArray("Измененный массив: \n",doubleNumbers);
+        System.out.println("Количество обнуленных ячеек: " + counter);
+    }
+
+    private static void printDoubleArray(String prefix, double[] array) {
         StringBuilder result = new StringBuilder(prefix);
         len = array.length;
         for (int i = 0; i < len; i++) {
-            String stringValue = Double.toString(array[i]);
+            String stringArrayValue = Double.toString(array[i]);
             if (i == 7) {
-                result.append(String.format("%.5s", stringValue)).append("\n");
+                result.append(String.format("%.5s", stringArrayValue)).append("\n");
             } else {
-                result.append(String.format("%.5s ", stringValue));
+                result.append(String.format("%.5s ", stringArrayValue));
             }
         }
-        return result.toString();
+        System.out.println(result);
+    }
+
+    private static void printAlphabetStairs() {
+        char[] alphabetChars = new char[26];
+        len = alphabetChars.length;
+        for (int i = 0; i < len; i++) {
+            alphabetChars[i] = (char) ('A' + i);
+        }
+
+        for (int i = len - 1; i >= 0; i--) {
+            for (int j = len - 1; j >= 0; j--) {
+                if (j != i - 1) {
+                    System.out.print(alphabetChars[j]);
+                } else {
+                    break;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    private static void fillUniqueNumbers() {
+        int[] uniqueNumbers = new int[30];
+        len = uniqueNumbers.length;
+        for (int i = 0; i < len; i++) {
+            int num;
+            do {
+                num = (int) (Math.random() * 40) + 60;
+            } while (findNum(uniqueNumbers, num));
+            uniqueNumbers[i] = num;
+        }
+
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+
+            for (int i = 0; i < len - 1; i++) {
+                if (uniqueNumbers[i] > uniqueNumbers[i + 1]) {
+                    int temp = uniqueNumbers[i];
+                    uniqueNumbers[i] = uniqueNumbers[i + 1];
+                    uniqueNumbers[i + 1] = temp;
+                    isSorted = false;
+                }
+            }
+        }
+
+        for (int i = 0; i < len; i++) {
+            if ((i + 1) % 10 == 0) {
+                System.out.print(uniqueNumbers[i]);
+                System.out.println();
+            } else {
+                System.out.print(uniqueNumbers[i] + ", ");
+            }
+        }
     }
 
     private static boolean findNum(int[] array, int num) {
