@@ -8,7 +8,7 @@ public class ArrayTheme {
         reverseArray();
 
         System.out.println("\n2. Произведение элементов массива");
-        calculateProduct();
+        calculateFactorial();
 
         System.out.println("\n3. Удаление элементов массива");
         removeElements();
@@ -22,42 +22,39 @@ public class ArrayTheme {
 
     private static void reverseArray() {
         int[] intNumbers = {1, 7, 4, 5, 2, 6, 3};
-        printIntArray("До реверса: ", intNumbers);
+        printArray("До реверса: ", intNumbers);
         len = intNumbers.length;
         for (int i = 0; i < intNumbers.length / 2; i++) {
             int temp = intNumbers[i];
-            --len;
-            intNumbers[i] = intNumbers[len];
+            intNumbers[i] = intNumbers[--len];
             intNumbers[len] = temp;
         }
-        printIntArray("После реверса: ", intNumbers);
+        printArray("После реверса: ", intNumbers);
     }
 
-    private static void printIntArray(String prefix, int[] array) {
+    private static void printArray(String prefix, int[] array) {
         StringBuilder result = new StringBuilder(prefix + "[");
         len = array.length;
         for (int i = 0; i < len; i++) {
             result.append(array[i]);
-            if (i == len - 1) {
-                result.append("]");
-            } else {
+            if (i < len - 1) {
                 result.append(", ");
             }
         }
-        System.out.println(result);
+        System.out.println(result.append("]"));
     }
 
-    private static void calculateProduct() {
-        int[] intNumbers = new int[10];
-        len = intNumbers.length;
+    private static void calculateFactorial() {
+        int[] factorialNumbers = new int[10];
+        len = factorialNumbers.length;
         for (int i = 0; i < len; i++) {
-            intNumbers[i] = i;
+            factorialNumbers[i] = i;
         }
 
         int product = 1;
         for (int i = 1; i < len - 1; i++) {
             product *= i;
-            System.out.print(intNumbers[i]);
+            System.out.print(factorialNumbers[i]);
             String mathSign = (i == len - 2) ? " = " : " * ";
             System.out.print(mathSign);
         }
@@ -65,37 +62,35 @@ public class ArrayTheme {
     }
 
     private static void removeElements() {
-        double[] doubleNumbers = new double[15];
-        len = doubleNumbers.length;
+        double[] randomNumbers = new double[15];
+        len = randomNumbers.length;
         for (int i = 0; i < len; i++) {
-            doubleNumbers[i] = Math.random();
+            randomNumbers[i] = Math.random();
         }
-        printDoubleArray("Исходный массив: \n",doubleNumbers);
+        printArray("Исходный массив: \n",randomNumbers);
 
-        double middleCellValue = doubleNumbers[(len - 1) / 2];
+        double middleCellValue = randomNumbers[(len - 1) / 2];
         int counter = 0;
         for (int i = 0; i < len; i++) {
-            if (middleCellValue < doubleNumbers[i]) {
-                doubleNumbers[i] = 0;
+            if (middleCellValue < randomNumbers[i]) {
+                randomNumbers[i] = 0;
                 counter++;
             }
         }
-        printDoubleArray("Измененный массив: \n",doubleNumbers);
+        printArray("Измененный массив: \n",randomNumbers);
         System.out.println("Количество обнуленных ячеек: " + counter);
     }
 
-    private static void printDoubleArray(String prefix, double[] array) {
-        StringBuilder result = new StringBuilder(prefix);
+    private static void printArray(String prefix, double[] array) {
+        System.out.print(prefix);
         len = array.length;
         for (int i = 0; i < len; i++) {
-            String stringArrayValue = Double.toString(array[i]);
-            if (i == 7) {
-                result.append(String.format("%.5s", stringArrayValue)).append("\n");
-            } else {
-                result.append(String.format("%.5s ", stringArrayValue));
+            if (i == 8) {
+                System.out.println();
             }
+            System.out.printf("%.3f ", array[i]);
         }
-        System.out.println(result);
+        System.out.println();
     }
 
     private static void printAlphabetStairs() {
@@ -106,12 +101,8 @@ public class ArrayTheme {
         }
 
         for (int i = len - 1; i >= 0; i--) {
-            for (int j = len - 1; j >= 0; j--) {
-                if (j != i - 1) {
+            for (int j = len - 1; j != i - 1; j--) {
                     System.out.print(alphabetChars[j]);
-                } else {
-                    break;
-                }
             }
             System.out.println();
         }
@@ -144,8 +135,7 @@ public class ArrayTheme {
 
         for (int i = 0; i < len; i++) {
             if ((i + 1) % 10 == 0) {
-                System.out.print(uniqueNumbers[i]);
-                System.out.println();
+                System.out.println(uniqueNumbers[i]);
             } else {
                 System.out.print(uniqueNumbers[i] + ", ");
             }
@@ -153,13 +143,11 @@ public class ArrayTheme {
     }
 
     private static boolean findNum(int[] array, int num) {
-        boolean isFoundNum = false;
         for (int i : array) {
             if (i == num) {
-                isFoundNum = true;
-                break;
+                return true;
             }
         }
-        return isFoundNum;
+        return false;
     }
 }
