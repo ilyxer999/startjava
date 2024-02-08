@@ -24,7 +24,7 @@ public class ArrayTheme {
         int[] intNumbers = {1, 7, 4, 5, 2, 6, 3};
         printArray("До реверса: ", intNumbers);
         len = intNumbers.length;
-        for (int i = 0; i < intNumbers.length / 2; i++) {
+        for (int i = 0; i < len / 2; i++) {
             int temp = intNumbers[i];
             intNumbers[i] = intNumbers[--len];
             intNumbers[len] = temp;
@@ -45,16 +45,16 @@ public class ArrayTheme {
     }
 
     private static void calculateFactorial() {
-        int[] factorialNumbers = new int[10];
-        len = factorialNumbers.length;
+        int[] multipliers = new int[10];
+        len = multipliers.length;
         for (int i = 0; i < len; i++) {
-            factorialNumbers[i] = i;
+            multipliers[i] = i;
         }
 
         int product = 1;
         for (int i = 1; i < len - 1; i++) {
             product *= i;
-            System.out.print(factorialNumbers[i]);
+            System.out.print(multipliers[i]);
             String mathSign = (i == len - 2) ? " = " : " * ";
             System.out.print(mathSign);
         }
@@ -94,15 +94,15 @@ public class ArrayTheme {
     }
 
     private static void printAlphabetStairs() {
-        char[] alphabetChars = new char[26];
-        len = alphabetChars.length;
+        char[] alphabet = new char[26];
+        len = alphabet.length;
         for (int i = 0; i < len; i++) {
-            alphabetChars[i] = (char) ('A' + i);
+            alphabet[i] = (char) ('A' + i);
         }
 
         for (int i = len - 1; i >= 0; i--) {
             for (int j = len - 1; j != i - 1; j--) {
-                    System.out.print(alphabetChars[j]);
+                System.out.print(alphabet[j]);
             }
             System.out.println();
         }
