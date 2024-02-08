@@ -4,21 +4,27 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+
         Scanner console = new Scanner(System.in);
         String exit = "yes";
 
         while (!exit.equals("no")) {
-            System.out.print("Введите первое число: ");
-            calculator.setA(console.nextInt());
-            System.out.print("Введите знак математической операции: ");
-            calculator.setSign(console.next().charAt(0));
-            System.out.print("Введите второе число: ");
-            calculator.setB(console.nextInt());
-            calculator.calculate();
-            calculator.printResult();
+            System.out.print("Введите математическое выражение: ");
+            String userInput = console.nextLine();
+            Calculator calculator = new Calculator(userInput.split(" "));
+
+            if (calculator.chekSign()) {
+                System.out.println("Ошибка: знак " + calculator.getSign() + " не поддерживается");
+            } else {
+                System.out.print(userInput + " = ");
+                if (calculator.calculate() % 1 != .0) {
+                    System.out.printf("%.3f", calculator.calculate());
+                } else {
+                    System.out.printf("%d", (int) calculator.calculate());
+                }
+            }
             do {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+                System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
                 exit = console.next();
             } while (!exit.equals("yes") && !exit.equals("no"));
         }

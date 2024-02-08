@@ -1,28 +1,25 @@
 package com.startjava.Lesson_2_3_4.calculator;
 
+import java.util.Arrays;
+
 public class Calculator {
     private int a;
     private int b;
     private char sign;
-    private int result;
 
-    public void setA(int a) {
-        if (a > 0) {
-            this.a = a;
-        }
+
+    public Calculator(String[] mathOperation) {
+        a = Integer.parseInt(mathOperation[0]);
+        sign = mathOperation[1].charAt(0);
+        b = Integer.parseInt(mathOperation[2]);
     }
 
-    public void setB(int b) {
-        if (b > 0) {
-            this.b = b;
-        }
+    public char getSign() {
+        return sign;
     }
 
-    public void setSign(char sign) {
-        this.sign = sign;
-    }
-
-    public void calculate() {
+    public double calculate() {
+        double result = 0;
         switch (sign) {
             case '+' :
                 result = a + b;
@@ -34,27 +31,24 @@ public class Calculator {
                 result = a * b;
                 break;
             case '/' :
-                result = a / b;
+                result = (double) a / b;
                 break;
             case '^' :
-                result = a;
-                for (int i = 2; i <= b; i++) {
-                    result *= a;
-                }
+                result = Math.pow(a, b);
                 break;
             case '%' :
                 result = a % b;
                 break;
-            default :
-                sign = '\u0000';
         }
+        return result;
     }
 
-    public void printResult() {
-        if (a == 0 || b == 0 || sign == '\u0000') {
-            System.out.println("Некорректный ввод");
-        } else {
-            System.out.println(a + " " + sign + " " + b + " = " + result);
+    public boolean chekSign() {
+        char[] mathSigns = {'+', '-', '*', '/', '^', '%'};
+        Arrays.sort(mathSigns);
+        if (Arrays.binarySearch(mathSigns, sign) < 0) {
+            return true;
         }
+        return  false;
     }
 }
