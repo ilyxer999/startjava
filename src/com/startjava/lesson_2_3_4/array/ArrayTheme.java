@@ -1,4 +1,4 @@
-package com.startjava.Lesson_2_3_4.array;
+package com.startjava.lesson_2_3_4.array;
 
 public class ArrayTheme {
     static int len;

@@ -1,6 +1,6 @@
 *.class
 out/
-src/com/startjava/Lesson_2_3_4/calculator/optionsj
-src/com/startjava/Lesson_2_3_4/calculator/options
+src/com/startjava/lesson_2_3_4/calculator/optionsj
+src/com/startjava/lesson_2_3_4/calculator/options
 .idea/
 *.iml
