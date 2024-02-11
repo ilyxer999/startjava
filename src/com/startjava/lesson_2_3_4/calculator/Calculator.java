@@ -1,18 +1,11 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int a;
-    private int b;
-    private char sign;
-
-    public char getSign() {
-        return sign;
-    }
-
-    public double calculate(String[] mathExpression) {
-        a = Integer.parseInt(mathExpression[0]);
-        sign = mathExpression[1].charAt(0);
-        b = Integer.parseInt(mathExpression[2]);
+    public double calculate(String mathExpression) {
+        String[] expression = mathExpression.split(" ");
+        int a = Integer.parseInt(expression[0]);
+        char sign = expression[1].charAt(0);
+        int b = Integer.parseInt(expression[2]);
         switch (sign) {
             case '+' :
                 return a + b;
@@ -21,11 +14,13 @@ public class Calculator {
             case '*' :
                 return a * b;
             case '/' :
-                return  (double) a / b;
+                return (double) a / b;
             case '^' :
                 return Math.pow(a, b);
             case '%' :
                 return a % b;
+            default:
+                System.out.println("Ошибка: знак " + sign + " не поддерживается");
         }
         return Double.MIN_VALUE;
     }

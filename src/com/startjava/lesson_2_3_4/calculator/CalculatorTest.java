@@ -12,7 +12,7 @@ public class CalculatorTest {
             String mathExpression = console.nextLine();
             Calculator calculator = new Calculator();
 
-            double result = calculator.calculate(mathExpression.split(" "));
+            double result = calculator.calculate(mathExpression);
             printResult(mathExpression, result);
 
             System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
@@ -26,11 +26,9 @@ public class CalculatorTest {
     }
 
     private static void printResult(String mathExpression, double result) {
-        if (result == Double.MIN_VALUE) {
-            System.out.println("Ошибка: знак " + mathExpression.charAt(2) + " не поддерживается");
-        } else if (result % 1 != .0) {
+        if (result % 1 != .0 && result != Double.MIN_VALUE) {
             System.out.printf("%s = %.3f", mathExpression, result);
-        } else {
+        } else if (result != Double.MIN_VALUE){
             System.out.printf("%s = %d", mathExpression, (int) result);
         }
     }
