@@ -1,27 +1,26 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    public double calculate(String mathExpression) {
+    public static double calculate(String mathExpression) {
         String[] expression = mathExpression.split(" ");
         int a = Integer.parseInt(expression[0]);
         char sign = expression[1].charAt(0);
         int b = Integer.parseInt(expression[2]);
-        switch (sign) {
-            case '+' :
-                return a + b;
-            case '-' :
-                return a - b;
-            case '*' :
-                return a * b;
-            case '/' :
-                return (double) a / b;
-            case '^' :
-                return Math.pow(a, b);
-            case '%' :
-                return a % b;
-            default:
-                System.out.println("Ошибка: знак " + sign + " не поддерживается");
+
+        if (a < 1 || b < 1) {
+            throw new RuntimeException();
         }
-        return Double.MIN_VALUE;
+
+        double result;
+        switch (sign) {
+            case '+' -> result =  a + b;
+            case '-' -> result = a - b;
+            case '*' -> result = a * b;
+            case '/' -> result = (double) a / b;
+            case '^' -> result = Math.pow(a, b);
+            case '%' -> result = a % b;
+            default -> throw new IllegalArgumentException();
+        };
+        return result;
     }
 }

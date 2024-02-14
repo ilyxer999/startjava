@@ -10,13 +10,25 @@ public class CalculatorTest {
         while (!exit.equals("no")) {
             System.out.print("Введите математическое выражение: ");
             String mathExpression = console.nextLine();
-            Calculator calculator = new Calculator();
 
-            double result = calculator.calculate(mathExpression);
-            printResult(mathExpression, result);
+            try {
+                double result = Calculator.calculate(mathExpression);
+                printResult(mathExpression, result);
+            } catch (NumberFormatException exception) {
+                if (mathExpression.length() < 5) {
+                    System.out.println("Введено некоректное выражение");
+                } else {
+                    System.out.println("Введено не число!");
+                }
+            } catch (IllegalArgumentException exception) {
+                System.out.println("Введен некоректный знак!");
+            } catch (RuntimeException exception) {
+                System.out.println("Введеные числа должны быть больше нуля!");
+            }
 
             System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
             exit = console.next();
+            console.nextLine();
 
             if (!exit.equals("yes") && !exit.equals("no")) {
                 System.out.print("Некорректный ввод. Повторите ввод [yes/no]: ");
@@ -26,10 +38,7 @@ public class CalculatorTest {
     }
 
     private static void printResult(String mathExpression, double result) {
-        if (result % 1 != .0 && result != Double.MIN_VALUE) {
-            System.out.printf("%s = %.3f", mathExpression, result);
-        } else if (result != Double.MIN_VALUE){
-            System.out.printf("%s = %d", mathExpression, (int) result);
-        }
+        String stringResult = result % 1 != .0 ? String.format("%.3f", result) : String.valueOf((int) result);
+        System.out.println(mathExpression + " = " + stringResult);
     }
 }
