@@ -2,25 +2,35 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
     public static double calculate(String mathExpression) {
-        String[] expression = mathExpression.split(" ");
-        int a = Integer.parseInt(expression[0]);
-        char sign = expression[1].charAt(0);
-        int b = Integer.parseInt(expression[2]);
+        String[] elements = mathExpression.split(" ");
 
-        if (a < 1 || b < 1) {
-            throw new RuntimeException();
+        if (elements.length != 3) {
+            throw new RuntimeException("Введено некорректное выражение!");
         }
 
-        double result;
-        switch (sign) {
-            case '+' -> result =  a + b;
-            case '-' -> result = a - b;
-            case '*' -> result = a * b;
-            case '/' -> result = (double) a / b;
-            case '^' -> result = Math.pow(a, b);
-            case '%' -> result = a % b;
-            default -> throw new IllegalArgumentException();
-        };
-        return result;
+        try {
+            int a = Integer.parseInt(elements[0]);
+            int b = Integer.parseInt(elements[2]);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Введены не числа!");
+        }
+
+        int a = Integer.parseInt(elements [0]);
+        char sign = elements[1].charAt(0);
+        int b = Integer.parseInt(elements [2]);
+
+        if (a < 1 || b < 1) {
+            throw new RuntimeException("Введенные числа должны быть больше 0");
+        }
+
+            return switch (sign) {
+                case '+' -> a + b;
+                case '-' -> a - b;
+                case '*' -> a * b;
+                case '/' -> (double) a / b;
+                case '^' -> Math.pow(a, b);
+                case '%' -> a % b;
+                default -> throw new RuntimeException("Введен некорректный знак!");
+            };
     }
 }

@@ -14,16 +14,8 @@ public class CalculatorTest {
             try {
                 double result = Calculator.calculate(mathExpression);
                 printResult(mathExpression, result);
-            } catch (NumberFormatException exception) {
-                if (mathExpression.length() < 5) {
-                    System.out.println("Введено некоректное выражение");
-                } else {
-                    System.out.println("Введено не число!");
-                }
-            } catch (IllegalArgumentException exception) {
-                System.out.println("Введен некоректный знак!");
-            } catch (RuntimeException exception) {
-                System.out.println("Введеные числа должны быть больше нуля!");
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
 
             System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
@@ -38,7 +30,7 @@ public class CalculatorTest {
     }
 
     private static void printResult(String mathExpression, double result) {
-        String stringResult = result % 1 != .0 ? String.format("%.3f", result) : String.valueOf((int) result);
+        String stringResult = result % 1 != .0 ? String.format("%.3f", result) : String.format("%d", (int) result);
         System.out.println(mathExpression + " = " + stringResult);
     }
 }
