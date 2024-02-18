@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        String exit = "yes";
+        String userResponse  = "yes";
 
-        while (!exit.equals("no")) {
+        while (!userResponse .equals("no")) {
             System.out.print("Введите математическое выражение: ");
             String mathExpression = console.nextLine();
 
@@ -19,12 +19,12 @@ public class CalculatorTest {
             }
 
             System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
-            exit = console.next();
+            userResponse  = console.next();
             console.nextLine();
 
-            if (!exit.equals("yes") && !exit.equals("no")) {
+            if (!userResponse .equals("yes") && !userResponse .equals("no")) {
                 System.out.print("Некорректный ввод. Повторите ввод [yes/no]: ");
-                exit = console.next();
+                userResponse  = console.next();
             }
         }
     }
