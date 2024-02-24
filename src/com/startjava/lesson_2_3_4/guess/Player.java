@@ -1,10 +1,12 @@
 package com.startjava.lesson_2_3_4.guess;
 
-public class Player {
+import java.util.Arrays;
 
+public class Player {
     private String name;
     private int number;
-
+    private int[] attempts = new int[10];
+    private int counterAttempts = 0;
     public Player(String name) {
         this.name = name;
     }
@@ -18,10 +20,24 @@ public class Player {
     }
 
     public void setNumber(int number) {
-        if (number > 0 && number <= 100) {
             this.number = number;
-        } else {
-            this.number = -1;
-        }
+            attempts[counterAttempts] = number;
+            counterAttempts++;
+    }
+
+    public void setCounterAttempts(int number) {
+        counterAttempts = number;
+    }
+
+    public int getCounterAttempts() {
+        return counterAttempts;
+    }
+
+    public int[] getAttempts() {
+        return attempts;
+    }
+
+    public void resetAttempts() {
+        Arrays.fill(attempts, 0, counterAttempts, 0);
     }
 }
