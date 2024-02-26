@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int number;
     private int[] attempts = new int[10];
-    private int counterAttempts = 0;
+    private int countAttempts;
+
     public Player(String name) {
         this.name = name;
     }
@@ -15,29 +15,28 @@ public class Player {
         return name;
     }
 
-    public int getNumber() {
-        return number;
+    public void addAttempt(int number) {
+        attempts[countAttempts] = number;
+        countAttempts++;
     }
 
-    public void setNumber(int number) {
-            this.number = number;
-            attempts[counterAttempts] = number;
-            counterAttempts++;
+    public int getCurrentAttempt() {
+        return attempts[countAttempts - 1];
     }
 
-    public void setCounterAttempts(int number) {
-        counterAttempts = number;
+    public void setCountAttempts(int number) {
+        countAttempts = number;
     }
 
-    public int getCounterAttempts() {
-        return counterAttempts;
+    public int getCountAttempts() {
+        return countAttempts;
     }
 
     public int[] getAttempts() {
-        return attempts;
+        return Arrays.copyOf(attempts, countAttempts);
     }
 
     public void resetAttempts() {
-        Arrays.fill(attempts, 0, counterAttempts, 0);
+        Arrays.fill(attempts, 0, countAttempts, 0);
     }
 }

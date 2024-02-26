@@ -4,28 +4,27 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
     public static void main(String[] args) {
+        String[] PlayerNames = new String[3];
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите имя первого игрока: ");
-        Player player1 = new Player(scanner.nextLine());
 
-        System.out.print("Введите имя второго игрока: ");
-        Player player2 = new Player(scanner.nextLine());
+        for (int i = 0; i < PlayerNames.length; i++) {
+            System.out.printf("Введите имя игрока №%d: ", i + 1);
+            PlayerNames[i] = scanner.nextLine();
+        }
 
-        System.out.print("Введите имя третьего игрока: ");
-        Player player3 = new Player(scanner.nextLine());
-        String userResponse = "yes";
+        String playerResponse = "yes";
 
-        while (!userResponse .equals("no")) {
-            GuessNumber game = new GuessNumber(player1, player2, player3);
+        while (!playerResponse .equals("no")) {
+            GuessNumber game = new GuessNumber(PlayerNames);
             game.start();
 
             System.out.print("\nХотите продолжить вычисления? [yes/no]: ");
-            userResponse  = scanner.next();
+            playerResponse  = scanner.next();
             scanner.nextLine();
 
-            if (!userResponse .equals("yes") && !userResponse .equals("no")) {
+            if (!playerResponse .equals("yes") && !playerResponse .equals("no")) {
                 System.out.print("Некорректный ввод. Повторите ввод [yes/no]: ");
-                userResponse  = scanner.next();
+                playerResponse  = scanner.next();
             }
         }
     }
